@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Paréntesis</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container text-center">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9 col-sm-12">
+          <h1 class="mt-4 fw-bold text-warning">Prueba Técnica Programador Jr.</h1>
+          <h4 class="mt-4 fw-bold">Instrucciones:</h4>
+          <p>
+            Dado un string compuesto de paréntesis <span class="text-info fw-bold fs-4">()</span>, llaves <span class="text-info fw-bold fs-4">{}</span>, y corchetes <span class="text-info fw-bold fs-4">[]</span>, debes contar cuántos paréntesis correctamente emparejados hay — es decir, cuántos pares de <span class="text-info fw-bold fs-4">(</span> y <span class="text-info fw-bold fs-4">)</span> hay que estén balanceados y correctamente cerrados.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="textareaInteractive container mt-5">
+      <h5 class="mb-4 text-info fw-bold">Proceso visual del conteo de paréntesis</h5>
+      <textarea id="input" class="form-control mb-3" rows="3" placeholder="Ingresa solo paréntesis, llaves y corchetes..."></textarea>
+      <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center">
+        <button id="checkBtn" class="btn btn-primary">Verificar</button>
+        <button id="clearBtn" class="btn btn-secondary" style="display: none;">Limpiar</button>
+      </div>            
+      <div id="output" class="d-flex flex-wrap justify-content-center"></div>
+      <div id="result" class="result"></div>
+    </div>
+
+    <div class="solvedCode container mt-5" id="solvedCode">
+      <div class="row justify-content-center">
+        <div class="col-lg-9 col-sm-12">
+          <h4 class="fw-bold">Código Resuelto y explicado</h4>
+          <div class="code bg-dark rounded mt-5 py-5 px-4 text-start">            
+            <p>
+              <span class="keyword">function</span> <span class="function">countParenthesis</span>(arr) { <br>
+                &nbsp;&nbsp;<span class="keyword">const</span> stack = []; <span class="comment">// Creamos una pila (array) para guardar los paréntesis de apertura '('</span><br>
+                &nbsp;&nbsp;<span class="keyword">let</span> count = <span class="number">0</span>; <span class="comment">// Contador para llevar el total de pares de paréntesis válidos</span><br><br>
+            
+                &nbsp;&nbsp;<span class="comment">// Recorremos todo el arreglo de caracteres</span><br>
+                &nbsp;&nbsp;<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">const</span> char = arr[i]; <span class="comment">// Guardamos el carácter actual en una variable</span><br><br>
+            
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Si el carácter es un paréntesis de apertura...</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (char === <span class="string">'('</span>) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stack.push(char); <span class="comment">// Lo guardamos en la pila</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;} <span class="keyword">else if</span> (char === <span class="string">')'</span>) { <span class="comment">// Si es un paréntesis de cierre...</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (stack.length &gt; <span class="number">0</span>) { <span class="comment">// Verificamos si hay algún '(' sin cerrar</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stack.pop(); <span class="comment">// Quitamos el último '(' de la pila porque ya está emparejado</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count++; <span class="comment">// Sumamos 1 al contador de pares válidos</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <span class="comment">// Si no hay '(', ignoramos ese ')' porque está "desbalanceado"</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;}<br><br>
+            
+                &nbsp;&nbsp;<span class="keyword">return</span> count; <span class="comment">// Devolvemos el total de pares válidos encontrados</span><br>
+              }<br><br>
+            
+              <span class="comment">// Ejemplo de uso</span><br>
+              <span class="keyword">const</span> input = [<span class="string">'['</span>, <span class="string">'('</span>, <span class="string">'('</span>, <span class="string">'('</span>, <span class="string">'{'</span>, <span class="string">'('</span>, <span class="string">')'</span>, <span class="string">'}'</span>, <span class="string">')'</span>, <span class="string">']'</span>, <span class="string">')'</span>];<br>
+              <span class="keyword">const</span> result = <span class="function">countParenthesis</span>(input);<br>
+              <span class="function">console</span>.log(result); <span class="comment">// Salida: 3 — Hay 3 pares de paréntesis correctamente emparejados</span><br>
+            </p>            
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

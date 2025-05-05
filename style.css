@@ -60,4 +60,16 @@ body {
 .code .number      { color: #B5CEA8; }
 .code .punctuation { color: #D4D4D4; }
 
+/* a.text-white:hover i { // invertir los colores de un icono
+  filter: invert(1);
+  } */
 
+.github i:hover {
+  color: #928dab
+}
+.linkedin i:hover {
+  color: #0077B5;
+}
+.whatsapp i:hover {
+  color: #25D366;
+}
